@@ -32,3 +32,5 @@
 *.app
 
 *.ex5
+.vscode
+.vscode/
