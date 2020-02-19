@@ -90,3 +90,45 @@ void OnBookEvent(const string &symbol)
   }
   // 市场深度监听需要初始化 MarketBookAdd(Symbol()); // 初始化监听市场深度  Symbol()自动适用你ea当前运行的货币
 ```
+
+### EA编写时  常用函数1
+```
+string timeString = "2020.12.01";
+datetime time = StringToTime(timeString);
+printf(time);
+printf(TimeToString(time));
+
+string as = StringFormat("%s hello","world");
+   
+```
+
+### 字符串处理函数
+- StringFind    查询
+- StringSubstr  截取
+- StringSplit   拼接
+```
+// StringFind
+   string as = StringFormat("%s hello","world");
+   int als = StringFind(as,"hello",0); // 目标  需要查询的内容  起始位置
+   printf(als);
+
+// StringSubstr 截取
+   string as1 = StringSubstr(as,1,2); // 目标 起始位置 结束位置
+   printf(as1);
+
+// StringSplit 拼接
+   string test1 = "1,2,3,4,5,6,7,8,9";
+   string c2[]; // 定义一个数组 c2
+   a = StringSplit(test1,",",c2); // 目标 特征符 目的地
+   printf(a);
+```
+
+### 外部接受用户输入参数
+```
+#property script_show_inputs;  // 编写脚本框默认是不显示的需要用这个把它调出来
+
+// 操作 // 注释     
+input double lots=0.1;// this is test  
+
+```
+
