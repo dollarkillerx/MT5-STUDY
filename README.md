@@ -132,3 +132,67 @@ input double lots=0.1;// this is test
 
 ```
 
+### 中级语法
+```
+### 持久化
+
+   // 获取Mql程序的信息 (info id)
+   name = MQLInfoString(MQL_PROGRAM_NAME) + Symbol() + IntegerToString(majic);
+   
+   if (GlobalVariableCheck(name) != true) {
+   GlobalVariableSet(name,0); // 持久化  里面应该是应该HASHMAP
+   }
+
+### 枚举类型
+  enum duokong 
+  {
+    duo,// 多
+    kong,// 空
+    duokong,// 多&空
+  };  
+  input duokong duokongName=duo;// 多空
+
+### 结构体
+  // 结构体
+  struct kbar 
+  {
+    double open;
+    double close;
+    double hight;
+    datetime time;
+  };
+
+ // 结构体声明与赋值
+   kbar kb;
+   kb.open=1.1;
+   kb.time = D'2020.01.01';
+   kb.close = 1.2;
+
+### 数组
+
+   double a[]; // 空的 可变数组
+   double a1[10]; // 不可变数组
+   
+   double c = a1[0];
+   printf("a1 0 : %f",c);
+   
+   ArrayResize(a,2); // 调整动态数组大小 1.数组2.new数组大小
+   a[0] = 1.1;
+
+   # 操作价格数据 
+   MqlRates rates[];
+   ArraySetAsSeries(rates,true); // 序列化 索引
+   CopyRates(NULL,0,0,100,rates); // 分配数据
+   double op = rates[0].open;
+
+### 循环语句
+    int acs = 0;
+    while(acs < 10) {
+        acs++;
+        printf(acs);
+    }
+
+    for(int i =0;i<100;i++) {
+        printf(i);
+    }
+```
