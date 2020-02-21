@@ -132,7 +132,7 @@ input double lots=0.1;// this is test
 
 ```
 
-### 中级语法
+### MQL中级语法
 ```
 ### 持久化
 
@@ -195,4 +195,17 @@ input double lots=0.1;// this is test
     for(int i =0;i<100;i++) {
         printf(i);
     }
+```
+
+### MQL高级语法
+class Mql结尾
+```
+神奇的const  (有点像rust的那个什么函数  传入之后就变成了常量)
+class A {
+public:
+  void setName(const string name);    
+  void setAget() const {  // 这个const 是 这个fuction的操作不会对class中的成员变量做改变
+    // pass
+  }
+}
 ```
