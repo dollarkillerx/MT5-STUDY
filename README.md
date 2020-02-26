@@ -1,6 +1,8 @@
 # MT5-STUDY
 MT5 study
 
+大道至简  我不希望为了OOD 而 OOD  
+
 MQL 是事件驱动类型的语言   更上层的语言把
 
 ### 基础部分
@@ -198,7 +200,7 @@ input double lots=0.1;// this is test
 ```
 
 ### MQL高级语法
-class Mql结尾
+class .Mql结尾
 ```
 神奇的const  (有点像rust的那个什么函数  传入之后就变成了常量)
 class A {
@@ -208,4 +210,95 @@ public:
     // pass
   }
 }
+
+class People
+  {
+public:
+   string            name;
+   int               age;
+   string            getName()
+     {
+      return this.name;
+     }
+   // 函数重载
+   string            getName(string hel)
+     {
+      return hel + " " + this.name;
+     }
+
+   // 构造函数 和class名称一样
+                     People(string name,int age)
+     {
+      this.name = name;
+      this.age = age;
+      printf(__FUNCTION__); // __FUNCTION__ 内置变量  函数名称
+     }
+   // 析构函数
+                    ~People()
+     {
+      // 次类执行完毕 会执行这个   (mql 没有内存回收机制 是需要在这里手动回收内存  傻逼mt5 为什么不直接接入py呢)
+     }
+
+   static int        Chen(int x,int y)   // 静态函数不需要声明可以直接调用
+     {
+      return x * y;
+     }
+  };
+```
+class 2 
+```
+继承
+
+class Animal
+  {
+public:
+   string            race;
+   int               age;
+    Animal() {}
+                     Animal(string race,int age)
+     {
+      this.race = race;
+      this.age = age;
+     }
+   void              eat()
+     {
+      printf("eat... race:%s  age:%d",this.race,this.age);
+     }
+  };
+
+
+// #include <newClass/class1.mqh>
+#include "class1.mqh"
+class Humanity : public Animal
+  {
+public:
+   string            name;
+                     Humanity(string name,string race,int age)
+     {
+      this.name = name;
+      this.race = race;
+      this.age = age;
+     }
+   void              work()
+     {
+      printf(this.name + " work ...");
+     }
+  };
+
+实例化 子类时 首先会调用父类的构造函数
+
+
+#include <newClass/class2.mqh>
+void OnStart()
+  {
+   Humanity once("wang","humanity",18);
+   once.eat();
+   once.work();
+   
+  }
+
+抽象类与虚函数
+  virtual void add() = 0;  // 这个就是虚函数
+  如果一个类中只有虚函数  这个类 就是抽象类
+  
 ```
