@@ -5,7 +5,7 @@ MT5 study
 
 MQL 是事件驱动类型的语言   更上层的语言把
 
-### 基础部分
+### 基础部分 (demo1~2)
 我们想来看看一个ea文件  的一些事件函数
 ```
 int OnInit() 
@@ -134,7 +134,7 @@ input double lots=0.1;// this is test
 
 ```
 
-### MQL中级语法
+### MQL中级语法 (demo3)
 ```
 ### 持久化
 
@@ -199,7 +199,7 @@ input double lots=0.1;// this is test
     }
 ```
 
-### MQL高级语法
+### MQL高级语法  [demo4~5]
 class .Mql结尾
 ```
 神奇的const  (有点像rust的那个什么函数  传入之后就变成了常量)
@@ -300,5 +300,35 @@ void OnStart()
 抽象类与虚函数
   virtual void add() = 0;  // 这个就是虚函数
   如果一个类中只有虚函数  这个类 就是抽象类
-  
+
+```
+
+### 获取 软件信息  账户信息  货币数据  [demo6]
+获取账户相关信息
+```
+AccountInfoInterger()
+AccountInfoDouble()
+AccountInfoString()
+```
+获取终端信息
+```
+TerminalInfoInterger()
+TerminalInfoDouble()
+TerminalInfoString()
+```
+获取MT5信息
+```
+MQLInfoInteger()
+MQLInfoString()
+```
+
+获取货币信息
+``` 
+Symbol()  // 返回当前货币对名称
+Period()  // 当前图标周期
+Digits()  // 当前价格精度 (小数点数量)
+Point()   // 当前交易品种大小点
+SymbolInfoInterger()
+SymbolInfoDouble()
+SymbolInfoString()
 ```
