@@ -328,7 +328,13 @@ Symbol()  // 返回当前货币对名称
 Period()  // 当前图标周期
 Digits()  // 当前价格精度 (小数点数量)
 Point()   // 当前交易品种大小点
+```
+
+### 获取市场报价中商品信息，所有品种 [demo7]
+获取市场信息
+```
 SymbolInfoInterger()
 SymbolInfoDouble()
 SymbolInfoString()
 ```
+
