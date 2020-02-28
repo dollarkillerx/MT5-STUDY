@@ -337,4 +337,24 @@ SymbolInfoInterger()
 SymbolInfoDouble()
 SymbolInfoString()
 ```
+### 市场深度 [demo8]
+```
+   // 订阅货币对市场深度
+   if (MarketBookAdd(Symbol())) {
+      printf("订阅 %s 市场深度成功",SymbolName(Symbol(),true));
+   }else {
+      printf("订阅失败");
+   }
+   // MarketBookRelease(Symbol()) 取消订阅
 
+    //  获取当前市场深度
+    MqlBookInfo book[];
+    if (MarketBookGet(Symbol(),book)) {
+        int size = ArraySize(book);
+        for (int i=0;i<size;i++) {
+          Print(i+":",book[i].price  
+                +"    Volume = "+book[i].volume,
+                " type = ",book[i].type);
+        }
+    }
+```
