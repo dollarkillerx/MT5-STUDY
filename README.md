@@ -610,6 +610,31 @@ double ma5[];
      }
 ```
 ### 指标开发03 [demo13]
-超炫MACD实战
+超炫MACD实战 详见demo13
+
+### 跨时间周期 [demo14]
+```
+   if (kNum > rates_total) {
+      printf(rates_total);
+   }
+   double small_ma[];
+   double big_ma[];
+   datetime small_time[];
+   ArraySetAsSeries(small_ma,true);
+   ArraySetAsSeries(big_ma,true);
+   ArraySetAsSeries(small_time,true);
+   ArraySetAsSeries(time,true);
+   CopyBuffer(small_ma_point,0,0,kNum,small_ma);
+   CopyBuffer(big_ma_point,0,0,kNum,big_ma);
+   CopyTime(Symbol(),tf,0,kNum,small_time);
+   int k = 0 ;
+   for (int i=0;i<kNum;i++) {
+      if (time[i] < small_time[k]) {  // 如果当前小k线 在大k线下面
+         k++;
+      }
+      small_lineBuffer[i] = small_ma[k];
+      big_lineBuffer[i] = big_ma[k];
+   }
+```
 
 
