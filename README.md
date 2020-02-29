@@ -490,6 +490,7 @@ SymbolInfoString()
 ```
 
 ### 指标开发实战01 [demo11]
+基础
 ```
 // #property indicator_separate_window  // 画在辅图上面
  #property indicator_chart_window       // 画在主图上
@@ -577,3 +578,39 @@ int OnCalculate(const int rates_total,        // 目前图标k线数量
 ```
 
 ### 指标开发02 [demo12]
+变色线与金叉死叉
+```
+double ma5[];
+   double ma10[];
+   CopyBuffer(ma5_proint,0,0,rates_total,ma5);
+   CopyBuffer(ma10_proint,0,0,rates_total,ma10);
+   int start = 0;
+   if(prev_calculated > 0)
+     {
+      start = prev_calculated - 1;
+     }
+   for(int i = start; i<rates_total; i++)
+     {
+      line1Buffer[i] = ma5[i];
+      line2Buffer[i] = ma10[i];
+      if(open[i] > ma5[i])
+        {
+         line1Colors[i] = 1; // 转换颜色
+         line2Colors[i] = 1;
+        }
+        
+        if (i != 0) {
+         if (line1Buffer[i-1] < line2Buffer[i-1] && line1Buffer[i] >= line2Buffer[i]) {
+            upBuffer[i] = line1Buffer[i] - 100 *Point();
+         }
+         if (line1Buffer[i-1] > line2Buffer[i-1] && line1Buffer[i] <= line2Buffer[i]) {
+            downBuffer[i] = line1Buffer[i] + 100 *Point();
+         }
+        }
+     }
+```
+### 指标开发03 [demo13]
+超炫MACD实战
+```
+
+```
